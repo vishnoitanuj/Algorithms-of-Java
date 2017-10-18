@@ -6,7 +6,7 @@ This project deals with various algorithms required for programmers. You must ha
 
 The whole version is build in JDK 1.8, so you need to get java installed in the system. 
 To check java version type in terminal
-	# java -version
+# java -version
 
 ## Acknowledgments
 
