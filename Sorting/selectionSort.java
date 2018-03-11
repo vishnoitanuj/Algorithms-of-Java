@@ -1,13 +1,16 @@
 /*This program deals with selection sort Algorithm. In this the min/max element is selected and moved to its right index.
-Time Complexity:  O(n^2) */
+Time Complexity:
+Worst Case: O(n^2)
+Best Case: O(n^2)
+Avergae Case: O(n^2) */
 import java.util.Scanner;
 class selectionSort{
 	public static void sort(int[] a){
 		int i,j,min,temp;
 		for(i=0;i<a.length-1;i++){
-			min=a[i];
+			min=i;
 			for(j=i+1;j<a.length;j++){
-				if(a[j]<min)
+				if(a[j]<a[min])
 					min=j;
 			}
 			temp=a[i];

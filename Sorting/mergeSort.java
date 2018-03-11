@@ -1,8 +1,8 @@
 /*This program deals with Merge Sort Algorithm.
-Time Complexity -: 
-Best Case:		O(n)
-Average Case:	o(n^2) 
-Worst Case:		O(n*log(n)) 
+Time Complexity -:
+Best Case:		O(n*log(n))
+Average Case:	o(n*log(n))
+Worst Case:		O(n*log(n))
 Some Details:-
 1) Based on Divide and Conquer Algorithms
 2) Recursive Sorting Technique

@@ -1,14 +1,14 @@
 /*This program deals with Bubble Sort Algorithm. In this the array gets sorted from the right side.
-Time Complexity -: 
+Time Complexity -:
 Best Case:		O(n)
-Average Case:	o(n^2) 
+Average Case:	o(n^2)
 Worst Case:		O(n^2) */
 /*Hint: If swapping not done throughout the checking of a pass(outer do-loop) then swapping and checking is not required further*/
 import java.util.Scanner;
 class bubbleSort{
 	public static void sort(int[] a){
-		int i=0,swap=-1,j,temp,max;
-		do{
+		int i=0,swap=1,j,temp,max;
+		while(swap==1){
 			swap=-1;
 			max=a[i];
 			for(j=0;j<a.length-1-i;j++){
@@ -21,7 +21,7 @@ class bubbleSort{
 				}
 			}
 			++i;
-		}while(swap==1);
+		}
 		System.out.println("-----------------------------------");
 		System.out.println("Sorted Array:");
 		for(i=0;i<a.length;i++)

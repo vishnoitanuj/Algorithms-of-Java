@@ -35,7 +35,22 @@ class QuickSort{
       else
       i++;
     }
-    return pivot_pos;
+    /*If Pivot as last element, the following can also be done
+    int pivot = a[ei];
+    int i = si-1;
+    int j,t;
+    for(j=si;j<ei;j++){
+      if(a[j]<=pivot){
+        i++;
+        t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+      }
+    }
+    t = a[i+1];
+    a[i+1] = a[ei];
+    a[ei] = t;
+    return (i+1);*/
   }
   public static void main(String[] args){
     Scanner sc  = new Scanner(System.in);
