@@ -2,7 +2,8 @@
 Time Complexity -: 
 Best Case:		O(n)
 Average Case:	o(n^2) 
-Worst Case:		O(n^2) */
+Worst Case:		O(n^2) 
+This is better than bubble and insertion sorts.*/
 import java.util.Scanner;
 class insertionSort{
 	public static void sort(int[] a){
