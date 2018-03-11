@@ -1,56 +1,84 @@
 //Prerequisite: Counting Sort
-import java.util.Scanner;
-import java.util.Arrays;
+//Complexity : O(n)
 
-class radix{
+import java.util.*;
 
-  public static void radixSort(int[] a){
-    int m = getMax(a);
-    for(exp=1;m/exp>0;exp*=10)
-      countSort(a,exp);
-  }
+class Radix {
 
-  private static int getMax(int[] a){
-    max=a[0];
-    for(int i=1;i<a.length;i++){
-      if(a[i]>max)
-        max=a[i];
-    }
-    return max;
-  }
+	// A utility function to get maximum value in arr[]
+	static int getMax(int arr[], int n)
+	{
+		int mx = arr[0];
+		for (int i = 1; i < n; i++)
+			if (arr[i] > mx)
+				mx = arr[i];
+		return mx;
+	}
 
-  private static void countSort(int[] a,int exp){
-    int output[] = new int[a.length];
-    int count[] = new int[10];
-    for(i=0;i<10;i++)
-    count[i] = 0;
-    // Store count of occurrences in count[]
-    for(i=0;i<a.length;i++)
-    count[(a[i]/exp)%10]++;
-    // Change count[i] so that count[i] now contains actual
-    //  position of this digit in output[]
-    for(i=1;i<10;i++)
-    count[i] += count[i-1];
-    //Building output array
-    for(i=a.length-1;i>=0;i--){
-      output[count[(a[i]/exp)%10]-1] = a[i];
-      count[(a[i]/exp)%10]--;
+	// A function to do counting sort of arr[] according to
+	// the digit represented by exp.
+	static void countSort(int arr[], int n, int exp)
+	{
+		int output[] = new int[n]; // output array
+		int i;
+		int count[] = new int[10];
+		for(i=0;i<10;i++)
+			count[i] = 0;
 
-    // Copy the output array to arr[], so that arr[] now
-    // contains sorted numbers according to current digit
-    for(i=0;i<a.length;i++)
-    a[i] = output[i];
-    }
-  }
+		// Store count of occurrences in count[]
+		for (i = 0; i < n; i++)
+			count[ (arr[i]/exp)%10 ]++;
 
-  public static void main(String args[])throws Exception{
-    Scanner d=new Scanner(System.in);
-    System.out.println("Enter length of array");
-    int n=d.nextInt();
-    int[] a=new int[n];
-    System.out.println("Enter elements of array");
+		// Change count[i] so that count[i] now contains
+		// actual position of this digit in output[]
+		for (i = 1; i < 10; i++)
+			count[i] += count[i - 1];
+
+		// Build the output array
+		for (i = n - 1; i >= 0; i--)
+		{
+			output[count[ (arr[i]/exp)%10 ] - 1] = arr[i];
+			count[ (arr[i]/exp)%10 ]--;
+		}
+
+		// Copy the output array to arr[], so that arr[] now
+		// contains sorted numbers according to curent digit
+		for (i = 0; i < n; i++)
+			arr[i] = output[i];
+	}
+
+	// The main function to that sorts arr[] of size n using
+	// Radix Sort
+	static void radixsort(int arr[], int n)
+	{
+		// Find the maximum number to know number of digits
+		int m = getMax(arr, n);
+
+		// Do counting sort for every digit. Note that instead
+		// of passing digit number, exp is passed. exp is 10^i
+		// where i is current digit number
+		for (int exp = 1; m/exp > 0; exp *= 10)
+			countSort(arr, n, exp);
+	}
+
+	// A utility function to print an array
+	static void print(int arr[], int n)
+	{
+		for (int i=0; i<n; i++)
+			System.out.print(arr[i]+" ");
+	}
+
+
+	/*Driver function to check for above function*/
+	public static void main (String[] args)
+	{
+    Scanner sc  = new Scanner(System.in);
+    int n = sc.nextInt();
+    int input [] = new int[n];
     for(int i=0;i<n;i++)
-      a[i]=d.nextInt();
-
-  }
+    input[i] = sc.nextInt();
+    radixsort(input,n);
+    System.out.println("Sorted Array:");
+		print(input, n);
+	}
 }
